@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 // import LoginButton from './component/LoginButton';
-import LogoutButton from './component/LogoutButton';
+// import LogoutButton from './component/LogoutButton';
+// import Profile from './component/Profile';
 import Login from './pages/Login';
 import Home from './pages/Home';
-import Profile from './component/Profile';
 import { useAuth0 } from '@auth0/auth0-react'
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
     <>
       <Login />
       <Home />
-      <LogoutButton />
-      <Profile />
+      {/* <LogoutButton /> */}
+      {/* <Profile /> */}
     </>
   );
 }
