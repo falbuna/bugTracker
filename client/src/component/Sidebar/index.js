@@ -3,7 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 function Sidebar(){
 
-    const { user, isAuthenticated } = useAuth0();
+    const { logout, user, isAuthenticated } = useAuth0();
 
     const [sidebarOpen] = React.useState(false);
 
@@ -23,7 +23,7 @@ function Sidebar(){
           <div className="flex-shrink-0 flex items-center px-4">
             <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg" alt="Workflow" />
           </div>
-          <nav className="mt-5 px-2 space-y-1">
+          {/* <nav className="mt-5 px-2 space-y-1">
             <a href="#" className="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md">
 
               <svg className="text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -66,9 +66,9 @@ function Sidebar(){
               </svg>
               Reports
             </a>
-          </nav>
+          </nav> */}
         </div>
-        <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
+        {/* <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
           <a href="#" className="flex-shrink-0 group block">
             <div className="flex items-center">
               <div>
@@ -76,7 +76,7 @@ function Sidebar(){
               </div>
               <div className="ml-3">
                 <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">
-                  Tom Cook
+                {user.name}
                 </p>
                 <p className="text-sm font-medium text-gray-500 group-hover:text-gray-700">
                   View profile
@@ -84,7 +84,7 @@ function Sidebar(){
               </div>
             </div>
           </a>
-        </div>
+        </div> */}
       </div>
       <div className="flex-shrink-0 w-14">
       </div>
@@ -99,7 +99,7 @@ function Sidebar(){
             <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg" alt="Workflow" />
           </div>
           <nav className="mt-5 flex-1 px-2 bg-white space-y-1">
-            <a href="#" className="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <a href="/dashboard" className="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
 
               <svg className="text-gray-500 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -107,21 +107,21 @@ function Sidebar(){
               Dashboard
             </a>
 
-            <a href="#" className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <a href="/users" className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
               <svg className="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
-              Team
+              Manage Users
             </a>
 
-            <a href="#" className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <a href="/projects" className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
               <svg className="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
               </svg>
-              Projects
+              Manage Projects
             </a>
 
-            <a href="#" className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            {/* <a href="#" className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
               <svg className="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
@@ -133,18 +133,19 @@ function Sidebar(){
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
               </svg>
               Documents
-            </a>
+            </a> */}
 
-            <a href="#" className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+            <a href="/logout" className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md" onClick={() => logout()}>
               <svg className="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
-              Reports
+              Log Out
             </a>
+
           </nav>
         </div>
         <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
-          <a href="#" className="flex-shrink-0 w-full group block">
+          {/* <a href="#" className="flex-shrink-0 w-full group block"> */}
             <div className="flex items-center">
               <div>
                 <img className="inline-block h-9 w-9 rounded-full" src="/images/userlogo.png" alt="" />
@@ -158,7 +159,7 @@ function Sidebar(){
                 </p>
               </div>
             </div>
-          </a>
+          {/* </a> */}
         </div>
       </div>
     </div>

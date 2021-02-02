@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 // import LoginButton from './component/LoginButton';
-import LogoutButton from './component/LogoutButton';
+// import LogoutButton from './component/LogoutButton';
 // import Profile from './component/Profile';
 import Login from './pages/Login';
 import Sidebar from './component/Sidebar'
@@ -22,7 +22,7 @@ function App() {
       <div className="h-screen flex overflow-hidden bg-white">
       <Sidebar />
       <Home />
-      <LogoutButton />
+      {/* <LogoutButton /> */}
       {/* <Profile /> */}
       </div>
     </>
