@@ -3,7 +3,7 @@ import React from 'react';
 import InputProject from '../component/InputProject';
 import { useAuth0 } from '@auth0/auth0-react';
 
-function Home(){
+function Dashboard(){
 
     const { user, isAuthenticated } = useAuth0();
 
@@ -28,4 +28,4 @@ function Home(){
     )
 }
 
-export default Home;
+export default Dashboard;

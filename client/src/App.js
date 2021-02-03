@@ -5,9 +5,9 @@ import './App.css';
 // import Profile from './component/Profile';
 import Login from './pages/Login';
 import Sidebar from './component/Sidebar'
-import Home from './pages/Home';
 import { useAuth0 } from '@auth0/auth0-react'
 import Navbar from './component/Navbar';
+import Dashboard from './pages/Dashboard';
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
       <Navbar />
       <div className="h-screen flex overflow-hidden bg-white">
       <Sidebar />
-      <Home />
+      <Dashboard />
       {/* <LogoutButton /> */}
       {/* <Profile /> */}
       </div>
