@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import API from '../utils/API';
 import ProjectTable from '../component/ProjectTable';
-import { useAuth0 } from '@auth0/auth0-react';
 import InputProject from '../component/InputProject';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Projects(){
 
     const { user, isAuthenticated } = useAuth0();
 
     const [projectInput, setProjectInput] = useState(false);
+
+    const [projects, setProjects] = useState([]);
+
+    useEffect(() => {
+        loadProjects()
+    }, []);
+
+    function loadProjects(){
+        API.getProjects()
+            .then(res => {
+                setProjects(res.data)
+            })
+            .catch(err => console.log(err));
+    }
 
     return(
 
@@ -23,6 +38,23 @@ function Projects(){
                 projectInput
                     ?
                 <div className="py-4"> 
+                    <div className="bg-blue-50 px-4 py-5 border-b border-gray-200 sm:px-6">
+                            <div className="-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-nowrap">
+                                <div className="ml-4 mt-4">
+                                <h3 className="text-lg leading-6 font-medium text-gray-900">
+                                    Create a New Project
+                                </h3>
+                                <p className="mt-1 text-sm text-gray-500">
+                                    Input the name of the new project and a brief description of the project.
+                                </p>
+                                </div>
+                                <div className="ml-4 mt-4 flex-shrink-0">
+                                <button type="button" className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => setProjectInput(!projectInput)}>
+                                    Cancel
+                                </button>
+                                </div>
+                            </div>
+                    </div>
                     <InputProject setProjectInput={setProjectInput}/>
                 </div>
                     :
@@ -58,7 +90,7 @@ function Projects(){
                                         Description
                                     </th>
                                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Assigned User
+                                        Project Creator
                                     </th>
                                     {/* <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Role
@@ -69,8 +101,15 @@ function Projects(){
                                     </tr>
                                 </thead>
 
-                                <ProjectTable />
-                                
+                                { projects.map(project => (
+                                <ProjectTable 
+                                    project={project}
+                                    key={project._id}
+                                    title={project.title}
+                                    description={project.description}
+                                    creator={project.creator}
+                                />
+                                ))}
                                 </table>
                             </div>
                             </div>

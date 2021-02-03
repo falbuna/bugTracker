@@ -1,19 +1,19 @@
 import React from "react";
 
-function ProjectTable(){
+function ProjectTable(props){
 
     return(
 
     <tbody className="bg-white divide-y divide-gray-200">
         <tr>
         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-            test
+            {props.title}
         </td>
         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            test
+            {props.description}
         </td>
         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            test
+            {props.creator}
         </td>
         {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             Admin
@@ -22,7 +22,6 @@ function ProjectTable(){
             <a href="/edit" className="text-indigo-600 hover:text-indigo-900">Edit</a>
         </td>
         </tr>
-
         {/* <!-- More items... --> */}
     </tbody>
     )
