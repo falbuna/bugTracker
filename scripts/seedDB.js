@@ -8,7 +8,7 @@ mongoose.connect(
 
 const projectSeed = [
     {
-        assigned: "Francis",
+        assigned: "falbuna1@gmail.com",
         title: "Bug Tracker Project",
         description: "My first project using the bug tracker.",
     }
