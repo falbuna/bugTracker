@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import Profile from './component/Profile';
 import Login from './pages/Login';
 import Sidebar from './component/Sidebar';
 import { useAuth0 } from '@auth0/auth0-react';
 import Navbar from './component/Navbar';
 import Dashboard from './pages/Dashboard';
 import Projects from './pages/Projects';
+import ProjectDetails from './pages/ProjectDetails';
 
 function App() {
 
@@ -25,7 +25,7 @@ function App() {
       <Route exact path="/" component={Dashboard} />
       <Route exact path="/Dashboard" component={Dashboard} />
       <Route exact path="/projects" component={Projects} />
-      {/* <Profile /> */}
+      <Route exact path="/projects/:id" component={ProjectDetails} />
       </div>
     </>
     </Router>

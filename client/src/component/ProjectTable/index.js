@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 function ProjectTable(props){
 
@@ -19,7 +20,9 @@ function ProjectTable(props){
             Admin
         </td> */}
         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-            <a href="/edit" className="text-indigo-600 hover:text-indigo-900">Edit</a>
+            <Link to={"/projects/" + props.id}>
+            <p className="text-indigo-600 hover:text-indigo-900">Details</p>
+            </Link>
         </td>
         </tr>
         {/* <!-- More items... --> */}

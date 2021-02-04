@@ -100,7 +100,6 @@ function Projects(){
                                     </th>
                                     </tr>
                                 </thead>
-
                                 { projects.map(project => (
                                 <ProjectTable 
                                     project={project}
@@ -108,6 +107,7 @@ function Projects(){
                                     title={project.title}
                                     description={project.description}
                                     creator={project.creator}
+                                    id={project._id}
                                 />
                                 ))}
                                 </table>

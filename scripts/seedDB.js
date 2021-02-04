@@ -11,6 +11,13 @@ const projectSeed = [
         creator: "falbuna1@gmail.com",
         title: "Bug Tracker Project",
         description: "My first project using the bug tracker.",
+        tickets: [
+            {
+                title: "First Ticket",
+                submitter: "falbuna1@yahoo.com",
+                status: "Open"
+            }
+        ]
     }
 ]
 
