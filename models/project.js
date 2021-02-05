@@ -9,7 +9,8 @@ const projectSchema = new Schema({
         {
             title: {type: String},
             submitter: {type: String},
-            status: {type: String}
+            status: {type: String},
+            date: { type: Date, default: Date.now }
         }
     ]
 })

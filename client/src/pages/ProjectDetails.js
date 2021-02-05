@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import API from '../utils/API';
+import InputTicket from '../component/InputTicket';
 import { Link, useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -10,13 +11,28 @@ function ProjectDetails(){
 
     const [project, setProject] = useState([]);
 
+    const [ticketInput, setTicketInput] = useState(false);
+
+    const titleRef = useRef();
+    const statusRef = useRef();
+
+    function handleSaveTicket(id){
+        API.saveTicket(id, {
+            submitter: user.email,
+            title: titleRef.current.value,
+            status: statusRef.current.value,
+        })
+        .then(function(){
+            window.location.reload()
+      })}
+      
+
     const {id} = useParams()
     useEffect(() => {
         API.getProject(id)
             .then(res => setProject(res.data))
             .catch(err => console.log(err))
     }, [id])
-
 
     return(
         isAuthenticated && (
@@ -88,6 +104,67 @@ function ProjectDetails(){
               </dl>
             </div>
             
+            {
+                ticketInput
+                    ?
+                    <div className="py-6">
+                    <div class="bg-gray-50 px-4 py-2 border-b border-gray-200 sm:px-6">
+                        <div class="-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-nowrap">
+                            <div class="ml-4 mt-4">
+                            <h3 class="text-md leading-6 font-medium text-gray-900">
+                                Tickets for this Project
+                            </h3>
+                            <p class="mt-1 text-sm text-gray-500">
+                            </p>
+                            </div>
+                            <div class="ml-4 mt-4 flex-shrink-0">
+                            <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => setTicketInput(!ticketInput)}>
+                                Cancel
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form>
+                            <div className="mx-2 flex flex-col">
+                            <div className="-my-1 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                <div className="overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <label htmlFor="project_name" className="block text-sm font-medium text-gray-700">
+                                Ticket Name
+                                </label>
+                                <div className="mt-1">
+                                <input type="text" name="project_name" id="project_name" className="block w-full shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm border-gray-300 rounded-md" ref={titleRef}/>
+                                </div>
+                                </div>
+                                <div className="overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <label htmlFor="project_name" className="block text-sm font-medium text-gray-700">
+                                Status
+                                </label>
+                                <div className="mt-1">
+                                <input type="text" name="project_name" id="project_name" className="block w-full shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm border-gray-300 rounded-md" ref={statusRef}/>
+                                </div>
+                                </div>
+                                {/* <div>
+                                    <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+                                    Submitter
+                                    </label>
+                                    <div className="mt-1">
+                                    <textarea id="description" name="description" rows="3" className="block w-full shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm border-gray-300 rounded-md" ref={descRef}></textarea>
+                                    </div>
+                                </div> */}
+                                <div className="my-2">
+                                    <button onClick={() => handleSaveTicket(project._id)} className="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        Submit
+                                    </button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                    </form>
+
+                    </div>
+                :
             <div className="py-6">
             <div class="bg-gray-50 px-4 py-2 border-b border-gray-200 sm:px-6">
                 <div class="-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-nowrap">
@@ -99,13 +176,12 @@ function ProjectDetails(){
                     </p>
                     </div>
                     <div class="ml-4 mt-4 flex-shrink-0">
-                    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => setTicketInput(!ticketInput)}>
                         Create new ticket
                     </button>
                     </div>
                 </div>
             </div>
-
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -154,8 +230,9 @@ function ProjectDetails(){
                     </div>
                 </div>
             </div>
-
             </div>
+
+            }
             </div>
             </div>
             </main>

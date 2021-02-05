@@ -15,7 +15,8 @@ const projectSeed = [
             {
                 title: "First Ticket",
                 submitter: "falbuna1@yahoo.com",
-                status: "Open"
+                status: "Open",
+                date: new Date(Date.now())
             }
         ]
     }

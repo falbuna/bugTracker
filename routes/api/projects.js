@@ -8,5 +8,6 @@ router.route("/")
 router
     .route("/:id")
     .get(projectsController.findById)
+    .put(projectsController.update)
 
 module.exports = router;
