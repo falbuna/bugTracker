@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import API from '../utils/API';
-import InputTicket from '../component/InputTicket';
 import { Link, useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -206,25 +205,9 @@ function ProjectDetails(){
                             </th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="bg-gray-50">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                Cody Fisher
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                Product Directives Officer
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                cody.fisher@example.com
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                Owner
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                            </td>
-                            </tr>
-                        </tbody>
+                            {
+
+                            }
                         </table>
                     </div>
                     </div>
