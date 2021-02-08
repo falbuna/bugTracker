@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import API from '../utils/API';
+import moment from 'moment';
+import TicketTable from '../component/TicketTable';
 import { Link, useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -9,6 +11,8 @@ function ProjectDetails(){
     const { user, isAuthenticated } = useAuth0();
 
     const [project, setProject] = useState([]);
+
+    const [tickets, setTickets] = useState([]);
 
     const [ticketInput, setTicketInput] = useState(false);
 
@@ -24,13 +28,19 @@ function ProjectDetails(){
         .then(function(){
             window.location.reload()
       })}
-      
 
     const {id} = useParams()
     useEffect(() => {
         API.getProject(id)
             .then(res => setProject(res.data))
             .catch(err => console.log(err))
+    }, [id])
+
+    useEffect(() => {
+        API.getProject(id)
+            .then(res => {
+                setTickets(res.data.tickets)
+            }).catch(err => console.log(err))
     }, [id])
 
     return(
@@ -91,17 +101,17 @@ function ProjectDetails(){
                 ticketInput
                     ?
                     <div className="py-6">
-                    <div class="bg-gray-50 px-4 py-2 border-b border-gray-200 sm:px-6">
-                        <div class="-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-nowrap">
-                            <div class="ml-4 mt-4">
-                            <h3 class="text-md leading-6 font-medium text-gray-900">
+                    <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 sm:px-6">
+                        <div className="-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-nowrap">
+                            <div className="ml-4 mt-4">
+                            <h3 className="text-md leading-6 font-medium text-gray-900">
                                 Tickets for this Project
                             </h3>
-                            <p class="mt-1 text-sm text-gray-500">
+                            <p className="mt-1 text-sm text-gray-500">
                             </p>
                             </div>
-                            <div class="ml-4 mt-4 flex-shrink-0">
-                            <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => setTicketInput(!ticketInput)}>
+                            <div className="ml-4 mt-4 flex-shrink-0">
+                            <button type="button" className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => setTicketInput(!ticketInput)}>
                                 Cancel
                             </button>
                             </div>
@@ -149,48 +159,57 @@ function ProjectDetails(){
                     </div>
                 :
             <div className="py-6">
-            <div class="bg-gray-50 px-4 py-2 border-b border-gray-200 sm:px-6">
-                <div class="-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-nowrap">
-                    <div class="ml-4 mt-4">
-                    <h3 class="text-md leading-6 font-medium text-gray-900">
+            <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 sm:px-6">
+                <div className="-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-nowrap">
+                    <div className="ml-4 mt-4">
+                    <h3 className="text-md leading-6 font-medium text-gray-900">
                         Tickets for this Project
                     </h3>
-                    <p class="mt-1 text-sm text-gray-500">
+                    <p className="mt-1 text-sm text-gray-500">
+                        Summary for each ticket. Click on more details to view more information regarding the ticket.
                     </p>
                     </div>
-                    <div class="ml-4 mt-4 flex-shrink-0">
-                    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => setTicketInput(!ticketInput)}>
+                    <div className="ml-4 mt-4 flex-shrink-0">
+                    <button type="button" className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => setTicketInput(!ticketInput)}>
                         Create new ticket
                     </button>
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col">
-                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-white">
+            <div className="flex flex-col">
+                <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                        <table className="min-w-full divide-y divide-gray-200">
+                        <thead className="bg-white">
                             <tr>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Title
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Submitter
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Status
                             </th>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Date
                             </th>
-                            <th scope="col" class="relative px-6 py-3">
-                                <span class="sr-only">Edit</span>
+                            <th scope="col" className="relative px-6 py-3">
+                                <span className="sr-only">Edit</span>
                             </th>
                             </tr>
                         </thead>
                             {
-
+                                tickets.map(ticket => (
+                                    <TicketTable
+                                        key={ticket._id}
+                                        title={ticket.title}
+                                        submitter={ticket.submitter}
+                                        status={ticket.status}
+                                        date={moment(ticket.date).local().format("MM/DD/YYYY")}
+                                    />
+                                ))
                             }
                         </table>
                     </div>
