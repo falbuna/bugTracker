@@ -13,10 +13,10 @@ const projectSeed = [
         description: "My first project using the bug tracker.",
         tickets: [
             {
-                title: "First Ticket",
-                submitter: "falbuna1@yahoo.com",
-                status: "Open",
-                date: new Date(Date.now())
+                // title: "First Ticket",
+                // submitter: "falbuna1@yahoo.com",
+                // status: "Open",
+                // date: new Date(Date.now())
             }
         ]
     }
@@ -25,6 +25,17 @@ const projectSeed = [
 db.Project
     .remove({})
     .then(() => db.Project.collection.insertMany(projectSeed))
+    .then(data => {
+        console.log(data.result.n + "records inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.log(err);
+        process.exit(1);
+    });
+
+    db.Ticket
+    .remove({})
     .then(data => {
         console.log(data.result.n + "records inserted!");
         process.exit(0);

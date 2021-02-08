@@ -20,8 +20,8 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     update: function(req, res){
-        db.Project
-            .findOneAndUpdate( { _id: req.params.id }, { $push: {tickets: req.body }})
+        db.Ticket.create(req.body)
+            .then(({_id}) => db.Project.findOneAndUpdate({ _id: req.params.id }, {$push: { tickets: _id }}, {new: true }))
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }

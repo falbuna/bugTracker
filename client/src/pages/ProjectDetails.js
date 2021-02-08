@@ -16,7 +16,7 @@ function ProjectDetails(){
     const statusRef = useRef();
 
     function handleSaveTicket(id){
-        API.saveTicket(id, {
+        API.createTicket(id, {
             submitter: user.email,
             title: titleRef.current.value,
             status: statusRef.current.value,
@@ -76,22 +76,6 @@ function ProjectDetails(){
                     {project.creator}
                   </dd>
                 </div>
-                {/* <div className="sm:col-span-1">
-                  <dt className="text-sm font-medium text-gray-500">
-                    Salary expectation
-                  </dt>
-                  <dd className="mt-1 text-sm text-gray-900">
-                    $120,000
-                  </dd>
-                </div>
-                <div className="sm:col-span-1">
-                  <dt className="text-sm font-medium text-gray-500">
-                    Phone
-                  </dt>
-                  <dd className="mt-1 text-sm text-gray-900">
-                    +1 555-555-5555
-                  </dd>
-                </div> */}
                 <div className="sm:col-span-2">
                   <dt className="text-sm font-medium text-gray-500">
                     Project Description

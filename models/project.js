@@ -7,10 +7,8 @@ const projectSchema = new Schema({
     description: {type: String},
     tickets: [
         {
-            title: {type: String},
-            submitter: {type: String},
-            status: {type: String},
-            date: { type: Date, default: Date.now }
+            type: Schema.Types.ObjectId,
+            ref: "Ticket"
         }
     ]
 })

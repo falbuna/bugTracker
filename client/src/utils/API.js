@@ -14,9 +14,10 @@ const API = {
         return axios.post("/api/projects", projectData);
     },
 
-    saveTicket: function(id, projectData){
-        return axios.put("/api/projects/" + id, projectData);
-    }
+    createTicket: function(id, ticketData){
+        return axios.put("/api/projects/" + id, ticketData);
+    },
+
 
 }
 
