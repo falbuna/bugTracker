@@ -18,12 +18,17 @@ function ProjectDetails(){
 
     const titleRef = useRef();
     const statusRef = useRef();
+    const priorityRef = useRef();
+    const typeRef = useRef();
 
     function handleSaveTicket(id){
         API.createTicket(id, {
             submitter: user.email,
+            project: project.title,
             title: titleRef.current.value,
             status: statusRef.current.value,
+            priority: priorityRef.current.value,
+            type: typeRef.current.value
         })
         .then(function(){
             window.location.reload()
@@ -130,22 +135,32 @@ function ProjectDetails(){
                                 <input type="text" name="project_name" id="project_name" className="block w-full shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm border-gray-300 rounded-md" ref={titleRef}/>
                                 </div>
                                 </div>
-                                <div className="overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                <label htmlFor="project_name" className="block text-sm font-medium text-gray-700">
-                                Status
-                                </label>
-                                <div className="mt-1">
-                                <input type="text" name="project_name" id="project_name" className="block w-full shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm border-gray-300 rounded-md" ref={statusRef}/>
+                                <div>
+                                    <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+                                    <select id="status" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" ref={statusRef}>
+                                        <option selected>Open</option>
+                                        <option>Closed</option>
+                                        <option>Resolved</option>
+                                        <option>In Progress</option>
+                                    </select>
                                 </div>
+                                <div>
+                                    <label for="priority" class="block text-sm font-medium text-gray-700">Priority</label>
+                                    <select id="priority" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" ref={priorityRef}>
+                                        <option selected>None</option>
+                                        <option>Low</option>
+                                        <option>Medium</option>
+                                        <option>High</option>
+                                    </select>
                                 </div>
-                                {/* <div>
-                                    <label htmlFor="description" className="block text-sm font-medium text-gray-700">
-                                    Submitter
-                                    </label>
-                                    <div className="mt-1">
-                                    <textarea id="description" name="description" rows="3" className="block w-full shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm border-gray-300 rounded-md" ref={descRef}></textarea>
-                                    </div>
-                                </div> */}
+                                <div>
+                                    <label for="type" class="block text-sm font-medium text-gray-700">Priority</label>
+                                    <select id="type" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" ref={typeRef}>
+                                        <option selected>Bug/Error</option>
+                                        <option>Feature Requests</option>
+                                        <option>Comments</option>
+                                    </select>
+                                </div>
                                 <div className="my-2">
                                     <button onClick={() => handleSaveTicket(project._id)} className="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                         Submit
@@ -177,7 +192,16 @@ function ProjectDetails(){
                 </div>
             </div>
             <div className="flex flex-col">
+                {!tickets.length ? (
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                        <h1 className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">No tickets to Display</h1>
+                        </div>
+                        </div>
+                        </div>
+                        ) : (
+                    <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                         <table className="min-w-full divide-y divide-gray-200">
@@ -215,6 +239,7 @@ function ProjectDetails(){
                     </div>
                     </div>
                 </div>
+                                    )}
             </div>
             </div>
 

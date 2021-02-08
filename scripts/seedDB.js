@@ -28,10 +28,6 @@ db.Project
 
     db.Ticket
     .remove({})
-    .then(data => {
-        console.log(data.result.n + "records inserted!");
-        process.exit(0);
-    })
     .catch(err => {
         console.log(err);
         process.exit(1);

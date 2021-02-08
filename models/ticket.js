@@ -5,7 +5,10 @@ const ticketSchema = new Schema({
             title: {type: String},
             submitter: {type: String},
             status: {type: String},
-            date: { type: Date, default: Date.now }
+            project: {type: String},
+            priority: {type: String},
+            type: {type: String},
+            date: {type: Date, default: Date.now }
 })
 
 const Ticket = mongoose.model("Ticket", ticketSchema);
