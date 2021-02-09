@@ -106,13 +106,14 @@ function ProjectDetails(){
                 ticketInput
                     ?
                     <div className="py-6">
-                    <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 sm:px-6">
+                    <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 rounded-t-lg sm:px-6">
                         <div className="-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-nowrap">
                             <div className="ml-4 mt-4">
                             <h3 className="text-md leading-6 font-medium text-gray-900">
-                                Tickets for this Project
+                                Create a New Ticket for the Project
                             </h3>
                             <p className="mt-1 text-sm text-gray-500">
+                                Complete the fields to create a new ticket.
                             </p>
                             </div>
                             <div className="ml-4 mt-4 flex-shrink-0">
@@ -123,10 +124,10 @@ function ProjectDetails(){
                         </div>
                     </div>
 
-                    <form>
-                            <div className="mx-2 flex flex-col">
-                            <div className="-my-1 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <form className="border-solid border-2 rounded-b-lg border-gray-100">
+                            <div className="mx-10 flex flex-col">
+                            <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div className="grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2">
                                 <div className="overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <label htmlFor="project_name" className="block text-sm font-medium text-gray-700">
                                 Ticket Name
@@ -170,7 +171,6 @@ function ProjectDetails(){
                             </div>
                             </div>
                     </form>
-
                     </div>
                 :
             <div className="py-6">
@@ -232,17 +232,16 @@ function ProjectDetails(){
                                         submitter={ticket.submitter}
                                         status={ticket.status}
                                         date={moment(ticket.date).local().format("MM/DD/YYYY")}
+                                        id={ticket._id}
                                     />
-                                ))
-                            }
+                                ))}
                         </table>
                     </div>
                     </div>
                 </div>
-                                    )}
+                )}
             </div>
             </div>
-
             }
             </div>
             </div>

@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function TicketTable(props){
 
@@ -20,7 +20,9 @@ function TicketTable(props){
             {props.date}
         </td>
         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-            <a href="#" className="text-indigo-600 hover:text-indigo-900">More Details</a>
+            <Link to={"/tickets/" + props.id}>
+            <p className="text-indigo-600 hover:text-indigo-900">Ticket Details</p>
+            </Link>
         </td>
         </tr>
     </tbody>

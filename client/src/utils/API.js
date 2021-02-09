@@ -18,6 +18,13 @@ const API = {
         return axios.put("/api/projects/" + id, ticketData);
     },
 
+    getTickets: function(){
+        return axios.get("/api/tickets");
+    },
+
+    getTicket: function(id){
+        return axios.get("/api/tickets/" + id);
+    }
 
 }
 

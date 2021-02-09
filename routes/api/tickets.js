@@ -1,7 +1,11 @@
 const router = require("express").Router();
-const ticketsContoller = require("../../controllers/ticketsController");
+const ticketsController = require("../../controllers/ticketsController");
 
 router.route("/")
-    .post(ticketsContoller.create);
+    .get(ticketsController.findAll);
+
+router
+    .route("/:id")
+    .get(ticketsController.findById)
 
 module.exports = router;
