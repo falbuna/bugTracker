@@ -137,27 +137,27 @@ function ProjectDetails(){
                                 </div>
                                 </div>
                                 <div>
-                                    <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
-                                    <select id="status" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" ref={statusRef}>
-                                        <option selected>Open</option>
+                                    <label htmlFor="status" className="block text-sm font-medium text-gray-700">Status</label>
+                                    <select id="status" name="location" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" ref={statusRef}>
+                                        <option>Open</option>
                                         <option>Closed</option>
                                         <option>Resolved</option>
                                         <option>In Progress</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="priority" class="block text-sm font-medium text-gray-700">Priority</label>
-                                    <select id="priority" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" ref={priorityRef}>
-                                        <option selected>None</option>
+                                    <label htmlFor="priority" className="block text-sm font-medium text-gray-700">Priority</label>
+                                    <select id="priority" name="location" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" ref={priorityRef}>
+                                        <option>None</option>
                                         <option>Low</option>
                                         <option>Medium</option>
                                         <option>High</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="type" class="block text-sm font-medium text-gray-700">Priority</label>
-                                    <select id="type" name="location" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" ref={typeRef}>
-                                        <option selected>Bug/Error</option>
+                                    <label htmlFor="type" className="block text-sm font-medium text-gray-700">Priority</label>
+                                    <select id="type" name="location" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" ref={typeRef}>
+                                        <option>Bug/Error</option>
                                         <option>Feature Requests</option>
                                         <option>Comments</option>
                                     </select>
@@ -174,14 +174,14 @@ function ProjectDetails(){
                     </div>
                 :
             <div className="py-6">
-            <div className="bg-gray-50 px-4 py-2 border-b border-gray-200 sm:px-6">
+            <div className="bg-gray-50 px-4 py-2 border-b rounded-t-lg border-gray-200 sm:px-6">
                 <div className="-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-nowrap">
                     <div className="ml-4 mt-4">
                     <h3 className="text-md leading-6 font-medium text-gray-900">
                         Tickets for this Project
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">
-                        Summary for each ticket. Click on more details to view more information regarding the ticket.
+                        Summary of each ticket. Click on more details to view more information regarding the ticket.
                     </p>
                     </div>
                     <div className="ml-4 mt-4 flex-shrink-0">
@@ -195,9 +195,11 @@ function ProjectDetails(){
                 {!tickets.length ? (
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                        <h1 className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">No tickets to Display</h1>
+                    {/* <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"> */}
+                        {/* <h1 className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">No tickets to Display</h1> */}
+                        <div classNAme="App">
                         </div>
+                        {/* </div> */}
                         </div>
                         </div>
                         ) : (

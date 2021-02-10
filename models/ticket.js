@@ -8,7 +8,13 @@ const ticketSchema = new Schema({
             project: {type: String},
             priority: {type: String},
             type: {type: String},
-            date: {type: Date, default: Date.now }
+            date: {type: Date, default: Date.now },
+            comments: [
+                {
+                    type: Schema.Types.ObjectId,
+                    ref: "Comment"
+                }
+            ]
 })
 
 const Ticket = mongoose.model("Ticket", ticketSchema);

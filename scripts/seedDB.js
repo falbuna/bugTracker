@@ -26,7 +26,14 @@ db.Project
         process.exit(1);
     });
 
-    db.Ticket
+db.Ticket
+    .remove({})
+    .catch(err => {
+        console.log(err);
+        process.exit(1);
+    });
+
+db.Comment
     .remove({})
     .catch(err => {
         console.log(err);

@@ -24,6 +24,14 @@ const API = {
 
     getTicket: function(id){
         return axios.get("/api/tickets/" + id);
+    },
+
+    createComment: function(id, commentData){
+        return axios.put("/api/tickets/" + id, commentData);
+    },
+
+    getComment: function(id){
+        return axios.get("/api/comments/" + id);
     }
 
 }

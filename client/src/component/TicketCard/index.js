@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from 'react-router-dom';
+import API from "../../utils/API";
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 function TicketCard(props){
+
+    const { user } = useAuth0();
+
+    const messageRef = useRef();
+
+    function handleSaveComment(id){
+        API.createComment(id, {
+            commenter: user.email,
+            message: messageRef.current.value
+        })
+        .then(function(){
+            window.location.reload()
+        })}
+
 
     return(
 
@@ -24,7 +40,7 @@ function TicketCard(props){
             </div>
         </div>
         </div>
-        <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
+        <div className="border-t border-gray-200 px-4 py-3 sm:px-6">
             <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
             <div className="sm:col-span-1">
                 <dt className="text-sm font-medium text-gray-500">
@@ -76,11 +92,16 @@ function TicketCard(props){
             </div>
             <div className="sm:col-span-2">
                 <dt className="text-sm font-medium text-gray-500">
-                Comment
+                Add a Comment
                 </dt>
                 <dd className="mt-1 text-sm text-gray-900">
                     <div className="mt-1">
-                        <input type="text" name="comment" id="comment" className="block w-full shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm border-gray-300 rounded-md"/>
+                    <textarea id="description" name="description" rows="3" className="block w-full shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm border-gray-300 rounded-md" ref={messageRef}></textarea>
+                    </div>
+                    <div className="my-2">
+                        <button onClick={() => handleSaveComment(props.id)} className="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Submit
+                        </button>
                     </div>           
                 </dd>
             </div>
