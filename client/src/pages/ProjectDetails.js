@@ -162,7 +162,7 @@ function ProjectDetails(){
                                         <option>Comments</option>
                                     </select>
                                 </div>
-                                <div className="my-2">
+                                <div className="mx-2 my-2">
                                     <button onClick={() => handleSaveTicket(project._id)} className="inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                         Submit
                                     </button>
@@ -197,7 +197,7 @@ function ProjectDetails(){
                     <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     {/* <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"> */}
                         {/* <h1 className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">No tickets to Display</h1> */}
-                        <div classNAme="App">
+                        <div className="App">
                         </div>
                         {/* </div> */}
                         </div>
@@ -227,9 +227,9 @@ function ProjectDetails(){
                             </tr>
                         </thead>
                             {
-                                tickets.map(ticket => (
+                                tickets.map((ticket, index) => (
                                     <TicketTable
-                                        key={ticket._id}
+                                        key={index}
                                         title={ticket.title}
                                         submitter={ticket.submitter}
                                         status={ticket.status}

@@ -7,6 +7,7 @@ router.route("/")
 router
     .route("/:id")
     .get(ticketsController.findById)
+    .post(ticketsController.create)
     .put(ticketsController.update)
 
 module.exports = router;

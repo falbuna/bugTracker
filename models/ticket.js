@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ticketSchema = new Schema({
-            title: {type: String},
+            title: {type: String, required: true},
             submitter: {type: String},
             status: {type: String},
             project: {type: String},

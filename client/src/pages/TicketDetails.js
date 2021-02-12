@@ -40,6 +40,7 @@ function TicketDetails(){
             <div className="py-4"> 
 
                 <TicketCard
+                    key={ticket.index}
                     title={ticket.title} 
                     project={ticket.project}
                     date={moment(ticket.date).local().format("MM/DD/YYYY")}
@@ -81,12 +82,12 @@ function TicketDetails(){
                         </tr>
                     </thead>
                  {
-                    comments.map(comment => (
+                    comments.map((comment, index) => (
                         <CommentTable
-                            key={comment._id}
+                            key={index}
                             commenter={comment.commenter}
                             message={comment.message}
-                            created={comment.created}
+                            created={moment(comment.created).local().format("MM/DD/YYYY")}
                 />
                 ))}
                     </table>
