@@ -73,7 +73,7 @@ function TicketCard(props){
                                 Ticket Name
                                 </label>
                                 <div className="mt-1">
-                                <input type="text" name="project_name" id="project_name" className="block w-full shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm border-gray-300 rounded-md" ref={titleRef}/>
+                                <input type="text" name="project_name" id="project_name" className="block w-full shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm border-gray-300 rounded-md" placeholder={props.title} ref={titleRef} />
                                 </div>
                                 </div>
                                 <div>
@@ -140,6 +140,14 @@ function TicketCard(props){
                     </dt>
                     <dd className="mt-1 text-sm text-gray-900">
                     {props.project}
+                    </dd>
+                </div>
+                <div className="sm:col-span-1">
+                    <dt className="text-sm font-medium text-gray-500">
+                    Ticket Title
+                    </dt>
+                    <dd className="mt-1 text-sm text-gray-900">
+                    {props.title}
                     </dd>
                 </div>
                 <div className="sm:col-span-1">

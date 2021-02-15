@@ -7,6 +7,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Navbar from './component/Navbar';
 import Dashboard from './pages/Dashboard';
 import Projects from './pages/Projects';
+import Tickets from './pages/Tickets';
 import ProjectDetails from './pages/ProjectDetails';
 import TicketDetails from './pages/TicketDetails';
 
@@ -26,6 +27,7 @@ function App() {
       <Route exact path="/" component={Dashboard} />
       <Route exact path="/Dashboard" component={Dashboard} />
       <Route exact path="/projects" component={Projects} />
+      <Route exact path="/tickets" component={Tickets} />
       <Route exact path="/projects/:id" component={ProjectDetails} />
       <Route exact path="/tickets/:id" component={TicketDetails} />
       </div>

@@ -15,11 +15,11 @@ function CommentTable(props){
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {props.created}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        {/* <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 
                         <p className="text-indigo-600 hover:text-indigo-900">Details</p>
                         
-                        </td>
+                        </td> */}
                         </tr>
 
                     </tbody>
