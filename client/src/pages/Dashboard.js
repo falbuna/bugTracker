@@ -1,29 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import API from '../utils/API';
-// import LogoutButton from '../component/LogoutButton';
-// import InputProject from '../component/InputProject';
+import React from 'react';
+import StatusChart from '../component/Charts/StatusChart';
+import PriorityChart from '../component/Charts/PriortyChart';
+import TypeChart from '../component/Charts/TypeChart';
 import { useAuth0 } from '@auth0/auth0-react';
 
 
 function Dashboard(){
 
     const { user, isAuthenticated } = useAuth0();
-
-    const [ticketStatus, setTicketStatus] = useState([]);
-
-    useEffect(() => {
-      loadTicketStatus()
-  }, []);
-
-    function loadTicketStatus(){
-      API.getTicketStatus()
-          .then(res => {
-              setTicketStatus(res.data)
-          })
-          .catch(err => console.log(err));
-  }
-
-  console.log(ticketStatus)
 
     return(
 
@@ -35,32 +19,39 @@ function Dashboard(){
             </div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
               <div className="py-4">
-                <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
+                <div className="border-2 border-gray-100 bg-gray-300 rounded-lg">
                   <div>
-                    <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+                    <dl className="mt-5 mb-5 mx-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+
                       <div className="bg-white overflow-hidden shadow rounded-lg">
-                        <div className="px-4 py-5 sm:p-6">
-                          <dt className="text-sm font-medium text-gray-500 truncate">
-                            Total Subscribers
-                          </dt>
-                          <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                            71,897
-                          </dd>
+                        <div className="px-4 py-5 sm:p-6">                       
+                          <StatusChart />
+                            <dt className="text-md font-medium text-gray-800">
+                                Status of All Tickets
+                            </dt> 
                         </div>
                       </div>
 
                       <div className="bg-white overflow-hidden shadow rounded-lg">
-                        <div className="px-4 py-5 sm:p-6">
-                          <dt className="text-sm font-medium text-gray-500 truncate">
-                            Avg. Open Rate
-                          </dt>
-                          <dd className="mt-1 text-3xl font-semibold text-gray-900">
-                            58.16%
-                          </dd>
+                        <div className="px-4 py-5 sm:p-6">                       
+                          <PriorityChart />
+                            <dt className="text-md font-medium text-gray-800">
+                              Priority for All Tickets
+                            </dt> 
                         </div>
                       </div>
 
+
                       <div className="bg-white overflow-hidden shadow rounded-lg">
+                        <div className="px-4 py-5 sm:p-6">                       
+                          <TypeChart />
+                            <dt className="text-md font-medium text-gray-800">
+                              Tickets By Type
+                            </dt> 
+                        </div>
+                      </div>
+
+                      {/* <div className="bg-white overflow-hidden shadow rounded-lg">
                         <div className="px-4 py-5 sm:p-6">
                           <dt className="text-sm font-medium text-gray-500 truncate">
                             Avg. Click Rate
@@ -69,7 +60,8 @@ function Dashboard(){
                             24.57%
                           </dd>
                         </div>
-                      </div>
+                      </div> */}
+
                     </dl>
                   </div>
                 </div>
