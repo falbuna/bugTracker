@@ -3,6 +3,8 @@ const ticketsController = require("../../controllers/ticketsController");
 
 router.route("/")
     .get(ticketsController.findAll)
+    .put(ticketsController.findOpen)
+    .post(ticketsController.findStatus)
 
 router
     .route("/:id")

@@ -5,7 +5,7 @@ function ProjectTable(props){
 
     return(
 
-    <tbody className="bg-white divide-y divide-gray-200">
+    <tbody className="bg-white divide-y divide-gray-200" key={props.index}>
         <tr>
         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
             {props.title}

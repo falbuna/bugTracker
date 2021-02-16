@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import API from '../utils/API';
 // import LogoutButton from '../component/LogoutButton';
 // import InputProject from '../component/InputProject';
 import { useAuth0 } from '@auth0/auth0-react';
 
+
 function Dashboard(){
 
     const { user, isAuthenticated } = useAuth0();
+
+    const [ticketStatus, setTicketStatus] = useState([]);
+
+    useEffect(() => {
+      loadTicketStatus()
+  }, []);
+
+    function loadTicketStatus(){
+      API.getTicketStatus()
+          .then(res => {
+              setTicketStatus(res.data)
+          })
+          .catch(err => console.log(err));
+  }
+
+  console.log(ticketStatus)
 
     return(
 
@@ -13,15 +31,12 @@ function Dashboard(){
           <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none" tabIndex="0">
           <div className="py-6">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-              <h1 className="text-2xl font-semibold text-gray-900">Hello: {user.given_name}</h1>
+              <h1 className="text-2xl font-semibold text-gray-900">Hello: {user.email}</h1>
             </div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
               <div className="py-4">
                 <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
                   <div>
-                    <h3 className="text-lg leading-6 font-medium text-gray-900">
-                      {user.email}
-                    </h3>
                     <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
                       <div className="bg-white overflow-hidden shadow rounded-lg">
                         <div className="px-4 py-5 sm:p-6">

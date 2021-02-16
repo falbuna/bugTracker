@@ -100,7 +100,7 @@ function Projects(){
                                     </th>
                                     </tr>
                                 </thead>
-                                { projects.map(project => (
+                                { projects.map((project, index) => (
                                 <ProjectTable 
                                     project={project}
                                     key={project._id}

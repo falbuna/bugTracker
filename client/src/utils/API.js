@@ -26,17 +26,25 @@ const API = {
         return axios.get("/api/tickets/" + id);
     },
 
+    getOpenTickets: function(){
+        return axios.put("/api/tickets")
+    },
+
+    getTicketStatus: function(){
+        return axios.post("/api/tickets")
+    },
+
     createComment: function(id, commentData){
         return axios.post("/api/tickets/" + id, commentData);
+    },
+
+    updateTicket: function(id, ticketData){
+        return axios.put("/api/tickets/" + id, ticketData)
     },
 
     getComment: function(id){
         return axios.get("/api/comments/" + id);
     },
-
-    updateTicket: function(id, ticketData){
-        return axios.put("/api/tickets/" + id, ticketData)
-    }
 
 }
 
