@@ -73,12 +73,12 @@ function TicketCard(props){
                                 Ticket Name
                                 </label>
                                 <div className="mt-1">
-                                <input type="text" name="project_name" id="project_name" className="block w-full shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm border-gray-300 rounded-md" placeholder={props.title} ref={titleRef} />
+                                <input type="text" name="project_name" id="project_name" className="block w-full shadow-sm focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm border-gray-300 rounded-md" defaultValue={props.title} ref={titleRef} />
                                 </div>
                                 </div>
                                 <div>
                                     <label htmlFor="status" className="block text-sm font-medium text-gray-700">Status</label>
-                                    <select id="status" name="location" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" ref={statusRef}>
+                                    <select id="status" name="location" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" defaultValue={props.status} ref={statusRef}>
                                         <option>Open</option>
                                         <option>Closed</option>
                                         <option>Resolved</option>
@@ -87,7 +87,7 @@ function TicketCard(props){
                                 </div>
                                 <div>
                                     <label htmlFor="priority" className="block text-sm font-medium text-gray-700">Priority</label>
-                                    <select id="priority" name="location" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" ref={priorityRef}>
+                                    <select id="priority" name="location" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" defaultValue={props.priority} ref={priorityRef}>
                                         <option>None</option>
                                         <option>Low</option>
                                         <option>Medium</option>
@@ -96,7 +96,7 @@ function TicketCard(props){
                                 </div>
                                 <div>
                                     <label htmlFor="type" className="block text-sm font-medium text-gray-700">Type</label>
-                                    <select id="type" name="location" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" ref={typeRef}>
+                                    <select id="type" name="location" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" defaultValue={props.type} ref={typeRef}>
                                         <option>Bug/Error</option>
                                         <option>Feature Requests</option>
                                         <option>Comments</option>

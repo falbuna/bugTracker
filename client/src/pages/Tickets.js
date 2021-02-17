@@ -76,10 +76,10 @@ function Projects(){
                                 Project
                             </th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Submitter
+                                Status
                             </th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Status
+                                Priority
                             </th>
                             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Date
@@ -100,10 +100,10 @@ function Projects(){
                                         {ticket.project}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {ticket.submitter}
+                                        {ticket.status}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {ticket.status}
+                                        {ticket.priority}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         {moment(ticket.date).local().format("MM/DD/YYYY")}
