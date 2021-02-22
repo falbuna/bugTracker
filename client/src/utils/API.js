@@ -46,6 +46,22 @@ const API = {
         return axios.get("/api/comments/" + id);
     },
 
+    getUsers: function(){
+        return axios.get("/api/users");
+    },
+
+    getUser: function(id){
+        return axios.get("/api/users/" + id);
+    }, 
+
+    createProfile: function(id, profileData){
+        return axios.put("/api/users/" + id, profileData);
+    },
+
+    getProfile: function(id){
+        return axios.get("/api/profiles/" + id);
+    }
+
 }
 
 export default API;

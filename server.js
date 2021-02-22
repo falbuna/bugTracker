@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/bugtracker",
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://:@cluster0.mzg7y.mongodb.net/?retryWrites=true&w=majority",
 {
   useNewUrlParser: true,
   useFindAndModify: false,

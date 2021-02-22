@@ -6,10 +6,12 @@ import Sidebar from './component/Sidebar';
 import { useAuth0 } from '@auth0/auth0-react';
 import Navbar from './component/Navbar';
 import Dashboard from './pages/Dashboard';
+import Users from './pages/Users';
 import Projects from './pages/Projects';
 import Tickets from './pages/Tickets';
 import ProjectDetails from './pages/ProjectDetails';
 import TicketDetails from './pages/TicketDetails';
+import UserDetails from './pages/UserDetails';
 
 function App() {
 
@@ -26,10 +28,12 @@ function App() {
       <Sidebar />
       <Route exact path="/" component={Dashboard} />
       <Route exact path="/Dashboard" component={Dashboard} />
+      <Route exact path="/users" component={Users} />
       <Route exact path="/projects" component={Projects} />
       <Route exact path="/tickets" component={Tickets} />
       <Route exact path="/projects/:id" component={ProjectDetails} />
       <Route exact path="/tickets/:id" component={TicketDetails} />
+      <Route exact path="/users/:id" component={UserDetails} />
       </div>
     </>
     </Router>

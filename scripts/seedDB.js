@@ -3,7 +3,7 @@ const db = require("../models");
 
 mongoose.connect(
     process.env.MONGODB_URI ||
-    "mongodb://localhost/bugtracker"
+    "mongodb+srv://:@cluster0.mzg7y.mongodb.net/?retryWrites=true&w=majority"
 )
 
 const projectSeed = [
